@@ -23,7 +23,4 @@ CREATE DATABASE automobile ;
      client VARCHAR(225) NOT NULL;
      FOREIGN KEY (date_vente) REFERENCES voiture(date_vent);
  )
- CREATE TABLE accessoire(
-     id_accessoire INT PRIMARY KEY NOT NULL AUTO_INCREMENT;
- )
-lihdddkzkz
+ èiezkyeutru-ez
