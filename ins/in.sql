@@ -23,4 +23,4 @@ CREATE DATABASE automobile ;
      client VARCHAR(225) NOT NULL;
      FOREIGN KEY (date_vente) REFERENCES voiture(date_vent);
  )
- èiezkyeutru-ez
+ èiezkyeutru-ez mlhflqlijozeykfdjshe
