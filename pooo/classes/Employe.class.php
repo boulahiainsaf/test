@@ -1,79 +1,109 @@
 <?PHP
-class Employe{
+
+class Employe extends  Agence
+{
     public $_nom;
     public $_prenom;
-    public $_datEmbauche;
+    public $_dateEmbauche;
+    public $_fonction;
     public $_salaire;
     public $_service;
+    public $_nom_ag;
 
-// Mutateur : définit/modifie la valeur passée en argument à l'attribut 
-    public function setNom($sNom) 
+
+    public function setNom($sNom)
     {
-       return $this->_nom =$sNom ;
+        $this->_nom = $sNom;
     }
 
     public function setPrenom($sPrenom)
     {
-       return $this->_prenom = $sPrenom;
+        $this->_prenom = $sPrenom;
     }
 
-    public function setDatEmbauche($sDatEmbauche)
+    public function setDateEmbauche($sDatEmbauche)
     {
-       return $this->_datEmbauche = DateTime::createFromFormat('m/d/Y',$sDatEmbauche);
-    }  
+
+        $this->_dateEmbauche = DateTime::createFromFormat('d/m/Y', $sDatEmbauche);
+    }
+
+    public function setFonction($sFonction)
+    {
+        $this->_fonction = $sFonction;
+
+    }
 
     public function setSalaire($sSalaire)
     {
-       return $this->_salaire = $sSalaire;
+        $this->_salaire = $sSalaire;
 
     }
 
     public function setService($sService)
     {
-       return $this->_service = $sService;
+        $this->_service = $sService;
 
     }
 
-// Accesseur : renvoie la valeur d'un attribut  
-    
-public function getNom() 
-{
-    return $this->_nom;
-}
+// Accesseur : renvoie la valeur d'un attribut
 
-public function getPrenom() 
-{
-    return $this->_prenom;
-}
-public function getDatEmbauche() 
-{
-    return $this->_datEmbauche;
-}
+    public function getNom()
+    {
+        return $this->_nom;
+    }
 
-public function getSalaire() 
-{
-    return $this->_salaire;
-}
+    public function getPrenom()
+    {
+        return $this->_prenom;
+    }
 
-public function getService() 
-{
-    return $this->_service;
-}
+    public function getDateEmbauche()
+    {
+        return $this->_dateEmbauche;
+    }
+
+    public function getFonction()
+    {
+        return $this->_fonction;
+
+    }
+
+    public function getSalaire()
+    {
+        return $this->_salaire;
+    }
+
+    public function getService()
+    {
+        return $this->_service;
+    }
+
 //Méthode pour savoir combien d'année un salarié est dans l'entreprise
 
 
-public function getanciennete(){
-    $todaye= new datetime();
-    $dat_embauche= $this->getDatEmbauche();
-    $year= $todaye->format('Y')-$dat_embauche->format('Y');
-    return($year);
-    echo $year;
+    public function getAnciennete()
+    {
+        $todaye = new datetime();
+        $dat_embauche = $this->getDateEmbauche();
+        $year = $todaye->format('Y') - $dat_embauche->format('Y');
+        return ($year);
+
+
+    }
+
+    public function calculerPrime()
+    {
+        $prime = (0.05 * $this->_salaire) + ( ($this->getAnciennete()) *( 0.02 *($this->_salaire)));
+        $today = new datetime();
+        if (($today->format('D') == 31) && ($today->format('M') == 11)) {
+            echo "votre prime de " . $prime . "  a été envoyé à la banque .";
+
+        }
+        return $prime;
+    }
+
+
 
 }
-
-
-}
-
-
 
 ?>
